@@ -1,0 +1,26 @@
+chrome.tabs.query({}, (tabs) => {
+  const activeTabsList = document.getElementById("activeTabs");
+
+  // Clear any existing list items
+  activeTabsList.innerHTML = "";
+
+  for (const tab of tabs) {
+    if (!tab.url.includes("https://www.sahibinden.com/ilan/vasita-otomobil")) {
+      continue;
+    }
+    const listItem = document.createElement("li");
+
+    // Create the list item content (URL and title)
+    const listItemContent = document.createElement("span");
+    listItemContent.textContent = `${tab.url} - ${tab.title}`;
+    listItem.appendChild(listItemContent);
+
+    // Create the favorite button
+    const favoriteButton = document.createElement("button");
+    favoriteButton.classList.add("favoriteButton"); // Add the button style
+    favoriteButton.textContent = "Favorite"; // Button text
+    listItem.appendChild(favoriteButton);
+
+    activeTabsList.appendChild(listItem);
+  }
+});

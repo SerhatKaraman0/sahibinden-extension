@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Sahibinden Extension",
+  "description": "Sahibinden extension to find the most suitable car",
+  "version": "1.0",
+  "action": {
+    "default_popup": "./popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/main.js"],
+      "matches": ["https://www.sahibinden.com/ilan/*"]
+    }
+  ],
+  "permissions": ["activeTab", "storage", "tabs"],
+  "background": {
+    "service_worker": "scripts/background.js"
+  }
+}
